@@ -1,4 +1,7 @@
 
+import java.util.Objects;
+
+
 public class SimpleDate {
 
     private int day;
@@ -52,7 +55,6 @@ public class SimpleDate {
     }
     
     public int hashCode() {
-        int hash = year * 2 + month * 3 + day * 5;
-        return hash;
+        return Objects.hash(year, month, day);
     }
 }

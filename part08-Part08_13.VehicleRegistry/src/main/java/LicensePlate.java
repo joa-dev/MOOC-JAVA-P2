@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class LicensePlate {
@@ -12,6 +13,30 @@ public class LicensePlate {
     public LicensePlate(String country, String liNumber) {
         this.liNumber = liNumber;
         this.country = country;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(liNumber, country);
+    }
+    
+    @Override
+    public boolean equals(Object comparedObject) {
+        if (this == comparedObject) {
+            return true;
+        }
+        
+        if (!(comparedObject instanceof LicensePlate)) {
+            return false;
+        }
+        
+        LicensePlate comparedLP = (LicensePlate) comparedObject;
+        
+        if ((this.toString().equals(comparedLP.country + " " + comparedLP.liNumber))) {
+            return true;
+        }
+        
+        return false;
     }
 
     @Override
