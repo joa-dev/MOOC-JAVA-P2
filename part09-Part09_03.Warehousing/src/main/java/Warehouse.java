@@ -11,7 +11,6 @@ public class Warehouse {
         } else {
             this.capacity = 0.0;
         }
-
         this.balance = 0.0;
     }
 
