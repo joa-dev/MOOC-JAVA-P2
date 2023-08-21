@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: RegularExpressionsTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.05 s <<< FAILURE! - in RegularExpressionsTest
+kellonaikaHyvaksyyOikeat(RegularExpressionsTest)  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError: 
+check the code: new Checker().timeOfDay("20:00:00")
+ expected:<true> but was:<false>
+	at RegularExpressionsTest.kellonaikaHyvaksyyOikeat(RegularExpressionsTest.java:125)
+
+acceptsAllVowelStrings(RegularExpressionsTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: 
+check the code: new Checker().allVowels("aeiou")
+ expected:<true> but was:<false>
+	at RegularExpressionsTest.acceptsAllVowelStrings(RegularExpressionsTest.java:73)
+
