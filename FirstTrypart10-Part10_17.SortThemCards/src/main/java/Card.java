@@ -1,5 +1,4 @@
 
-
 public class Card implements Comparable<Card> {
 
     private int value;
@@ -17,7 +16,7 @@ public class Card implements Comparable<Card> {
     @Override
     public String toString() {
         String cardValue = "" + value;
-        if(value == 11) {
+        if (value == 11) {
             cardValue = "J";
         } else if (value == 12) {
             cardValue = "Q";
@@ -26,7 +25,7 @@ public class Card implements Comparable<Card> {
         } else if (value == 14) {
             cardValue = "A";
         }
-        
+
         return suit + " " + cardValue;
     }
 
@@ -39,12 +38,13 @@ public class Card implements Comparable<Card> {
     }
 
     @Override
-    public int compareTo(Card anotherCard) {
-        if (this.getSuit() == anotherCard.getSuit()) {
-            return this.getValue() - anotherCard.getValue();
+    public int compareTo(Card card) {
+        int suitValue = this.getSuit().ordinal() - card.getSuit().ordinal();
+        
+        if (suitValue == 0) {
+            return this.getValue() - card.getValue();
         } else {
-            return this.getSuit().ordinal() - anotherCard.getSuit().ordinal();
+            return suitValue;
         }
     }
-
 }
