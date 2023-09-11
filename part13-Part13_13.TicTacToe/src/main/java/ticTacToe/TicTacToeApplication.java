@@ -14,17 +14,34 @@ import javafx.stage.Stage;
 
 public class TicTacToeApplication extends Application {
 
+    private Label turn;
+    private Button[] buttons;
+
+    public TicTacToeApplication() {
+        this.turn = new Label("Turn: X");
+        this.buttons = new Button[9];
+        for (int i = 0; i < 9; i++) {
+            buttons[i] = createButton();
+        }
+    }
+
     /*public static void buttonLogic() {
         zeroZero
     }*/
     @Override
     public void start(Stage window) {
+
         BorderPane layout = new BorderPane();
-        Label turn = new Label("Turn: X");
-        Label ended = new Label("Game has ended");
+
+        //this.turn
+        Label ended = new Label("");
 
         //Button grid
         GridPane game = new GridPane();
+        game.setAlignment(Pos.CENTER);
+        game.setHgap(10);
+        game.setVgap(10);
+
         Button zeroZero = new Button(" ");
         Button zeroOne = new Button(" ");
         Button zeroTwo = new Button(" ");
@@ -50,9 +67,7 @@ public class TicTacToeApplication extends Application {
         turn.setPadding(new Insets(10, 10, 10, 10));
         ended.setFont(Font.font("Monospaced", 30));
         ended.setPadding(new Insets(10, 10, 10, 10));
-        game.setAlignment(Pos.CENTER);
-        game.setHgap(10);
-        game.setVgap(10);
+
         //game.setPadding(new Insets(5, 5, 5, 5));
         zeroZero.setFont(Font.font("Monospaced", 40));
         zeroOne.setFont(Font.font("Monospaced", 40));
@@ -78,28 +93,13 @@ public class TicTacToeApplication extends Application {
                     } catch (Exception e) {
                         System.out.println("Error: " + e);
                     }
-                    
-                    /*zeroZero.setOnMouseClicked((event) -> {
-                        zeroZero.setText("X");
-                            });
-                    zeroOne.setOnMouseClicked((event) -> zeroOne.setText("X"));
-                    zeroTwo.setOnMouseClicked((event) -> zeroTwo.setText("X"));
-                    oneZero.setOnMouseClicked((event) -> oneZero.setText("X"));
-                    oneOne.setOnMouseClicked((event) -> oneOne.setText("X"));
-                    oneTwo.setOnMouseClicked((event) -> oneTwo.setText("X"));
-                    twoZero.setOnMouseClicked((event) -> twoZero.setText("X"));
-                    twoOne.setOnMouseClicked((event) -> twoOne.setText("X"));
-                    twoTwo.setOnMouseClicked((event) -> twoTwo.setText("X"));*/
-                } else {
-                    try {
-                        Button button = (Button) eventX.getSource();
-                        button.setOnMouseClicked((event) -> button.setText("0"));
-                    } catch (Exception e) {
-                        System.out.println("Error: " + e);
-                    }
                 }
             }
         }
+/*
+                    
+                    
+*/
 
         window.setScene(new Scene(layout));
         window.show();
@@ -108,6 +108,16 @@ public class TicTacToeApplication extends Application {
 
     public static void main(String[] args) {
         launch(TicTacToeApplication.class);
+    }
+
+    private Button createButton() {
+        Button btn = new Button("");
+        btn.setFont(Font.font("Monospaced", 40));
+
+        btn.setOnAction(event -> {
+            
+        });
+
     }
 
 }
