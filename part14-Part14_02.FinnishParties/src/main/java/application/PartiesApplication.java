@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
 public class PartiesApplication extends Application {
@@ -13,6 +14,8 @@ public class PartiesApplication extends Application {
         NumberAxis yAxis = new NumberAxis(0, 30, 5);
         
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+        
+        XYChart.Series test = new XYChart.Series();
         
         
         
