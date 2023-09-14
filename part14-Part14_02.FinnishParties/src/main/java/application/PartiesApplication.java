@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
@@ -21,18 +22,25 @@ public class PartiesApplication extends Application {
 
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
 
-        XYChart.Series test = new XYChart.Series();
-
         //getting info from file
-        List<String> rows = new ArrayList<>();
-
+        ArrayList<String[]> rows = new ArrayList<>();
         try {
-            Files.lines(Paths.get("partiesdata.tsv")).forEach(row -> rows.add(row));
-            rows.forEach(row -> row.split("\t"));
-            System.out.println(rows);
+            Files.lines(Paths.get("partiesdata.tsv")).forEach(row -> {
+                String[] pieces = row.split("\t");
+                rows.add(pieces);
+            });
+            //System.out.println(rows.get(2)[0].toString());
+            //ok, the info is in an ArrayList where every line is divided in Arrays
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
+        
+        //loading info to XYChart
+        rows.stream().forEach(row -> {
+            XYChart.Series data = new XYChart.Series();
+            //...
+        });
+        
 
         //.....................
         Scene view = new Scene(lineChart, 640, 480);
@@ -42,21 +50,6 @@ public class PartiesApplication extends Application {
     }
 
     public static void main(String[] args) {
-        List<String> rows = new ArrayList<>();
 
-        try {
-            String texto = Files.lines(Paths.get("partiesdata.tsv")).toString();
-            
-            
-            /*List<String> pieces = Arrays.asList(row.split("\t"));
-            List<String> party = Arrays.asList(rows.forEach(row -> row.split("\t")));
-            rows.forEach(row -> party.add(row.split("\t")));
-            for (int i = 0; i < party.size(); i++) {
-                System.out.println(i + ": " + party.get(i));
-            }*/
-            System.out.println(texto);
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
     }
 }
